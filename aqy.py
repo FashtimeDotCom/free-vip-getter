@@ -5,6 +5,7 @@ from html.parser import HTMLParser
 from urllib.request import *
 import re
 
+
 class spider(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
