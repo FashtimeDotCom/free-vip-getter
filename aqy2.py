@@ -1,4 +1,4 @@
-﻿#coding: utf-8
+#coding: utf-8
 __author__ = 'AS126'
 
 from html.parser import HTMLParser
@@ -12,7 +12,7 @@ class spider(HTMLParser):
         self.data_list=[]
     def handle_starttag(self, tag, attrs):
         title=False
-        link_re='.*优酷会员账号.*'
+        link_re='.*爱奇艺vip.*'
         if tag == 'a':
             if len(attrs) == 0:
                 pass
@@ -25,16 +25,15 @@ class spider(HTMLParser):
                     if name=='href' and title:
                         self.link.append(value)
     def handle_data(self, data):
-        data_re='账号.*@'
+        data_re='账号\d*'
         if re.match(data_re,data):
             self.data_list.append(data)
 
 if __name__ == '__main__':
-    html=urlopen('http://www.vipfenxiang.com/youku/').read().decode('utf-8')
+    html=urlopen('http://www.vipfenxiang.com/aiqiyi/').read().decode('utf-8')
     spider1=spider()
     spider1.feed(html)
     result=spider1.link
-    print('账号无法使用说明：如果输入密码错误5次就会导致账号被锁，使用人数超过3人看电影就会异常。')
     for link in result:
         vip_page=urlopen(link).read().decode('utf-8')
         spider2=spider()
@@ -44,3 +43,4 @@ if __name__ == '__main__':
     print('数据来源：VIP分享网 http://www.vipfenxiang.com/')
     spider1.close()
     spider2.close()
+
