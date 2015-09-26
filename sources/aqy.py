@@ -64,8 +64,8 @@ if __name__ == '__main__':
         re_list=zip(spider2.data_list,spider2.pass_list)
         for data in re_list:
             for i in data:
-                print(i.lstrip())
-            
+                print(i.lstrip(),end='')
+            print()
         spider2.close()
     print('数据来源：http://www.aiqiyivip.com/')
 
