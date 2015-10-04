@@ -5,9 +5,7 @@ __author__ = 'AS126'
 #源站继续改数据结构，以为这就能防止被爬了？
 
 from html.parser import HTMLParser
-from urllib.request import *
 import re
-import random
 import req
 
 class spider(HTMLParser):

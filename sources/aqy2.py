@@ -2,7 +2,6 @@
 __author__ = 'AS126'
 
 from html.parser import HTMLParser
-from urllib.request import urlopen
 import re
 import req
 
