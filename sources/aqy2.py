@@ -4,6 +4,7 @@ __author__ = 'AS126'
 from html.parser import HTMLParser
 from urllib.request import urlopen
 import re
+import req
 
 class spider(HTMLParser):
     def __init__(self):
@@ -30,12 +31,12 @@ class spider(HTMLParser):
             self.data_list.append(data)
 
 if __name__ == '__main__':
-    html=urlopen('http://www.vipfenxiang.com/aiqiyi/').read().decode('utf-8')
+    html=req.reqs('http://www.vipfenxiang.com/aiqiyi/')
     spider1=spider()
     spider1.feed(html)
     result=spider1.link
     for link in result:
-        vip_page=urlopen(link).read().decode('utf-8')
+        vip_page=req.reqs(link)
         spider2=spider()
         spider2.feed(vip_page)
         for data in spider2.data_list:

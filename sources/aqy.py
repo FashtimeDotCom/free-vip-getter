@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 from urllib.request import *
 import re
 import random
+import req
 
 class spider(HTMLParser):
     def __init__(self):
@@ -47,17 +48,11 @@ class spider(HTMLParser):
         if tag == 'a':
             self.a_tag=False
 if __name__ == '__main__':
-    request=Request('http://www.aiqiyivip.com/forum-2-1.html')
-    ua_list=['User-Agent','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2467.2 Safari/537.36',
-             'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36']
-    request.add_header('User-Agent',random.choice(ua_list))
-    html=urlopen(request).read().decode('gbk')
+    html=req.reqs('http://www.aiqiyivip.com/forum-2-1.html','gbk')
     spider1=spider()
     spider1.feed(html)
     for link in spider1.rlink:
-        page_request=Request(link)
-        page_request.add_header('User-Agent',random.choice(ua_list))
-        vip_page=urlopen(page_request).read().decode('gbk')
+        vip_page=req.reqs(link,'gbk')
         vip_page.replace('<br>','')
         spider2=spider()
         spider2.feed(vip_page)
