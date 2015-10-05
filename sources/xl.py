@@ -42,4 +42,4 @@ if __name__ == '__main__':
     for (username,password) in result:
         print('账号{0};密码{1}'.format(username,password))
     spiders.close()
-    print('数据来源：九秒分享 http://www.9sep.org/')
+    print('数据来源：VIP分享吧 http://www.vipfx8.com')
