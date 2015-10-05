@@ -8,7 +8,8 @@
 
 2015-10-5<br>
 * 修改yk.py，调用reqs.py发起HTTP请求，增加了两个新UA<br>
-####技术信息：
+
+####技术信息：<br>
 req.py包含函数reqs，其通式为：<br>
 `str reqs(url,encode='utf-8')`<br>
 调用req.reqs()，可以用get方法请求url，返回值为字符串，即所请求页面的全部HTML内容<br>
