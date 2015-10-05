@@ -19,7 +19,6 @@ class spider(HTMLParser):
         if tag == 'span':
             if len(attrs):
                 for (name, value) in attrs:
-
                     if value == 'articleSection':
                         self.user = True
                     if value == 'articleBody':
